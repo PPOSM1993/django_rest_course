@@ -1,0 +1,36 @@
+GET http://localhost:8000/api/products/ HTTP/1.1
+
+###
+
+POST http://localhost:8000/api/products/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3ODM4NDMwLCJpYXQiOjE3Mzc4MzgxMzAsImp0aSI6ImM2NmNjYTA3M2U3MDQyNzhiZGE0ZjRlY2U2ZmUzMzFmIiwidXNlcl9pZCI6MX0.P6JjRrRp-HNsxlZTNuuG8YpGfDjlOOhabUtdZBt6LJU
+
+{
+    "name": "Television Samsung Smart TV",
+    "price": 600.00,
+    "stock": 15,
+    "description": "An amazing TV"
+}
+
+###
+POST http://localhost:8000/api/token/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "pedro",
+    "password": "fef51e5a"
+}
+
+###
+GET http://localhost:8000/api/user_orders/ HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3ODM4NTcxLCJpYXQiOjE3Mzc4MzgyNzEsImp0aSI6Ijk4NWM4Mjk5NjM5YTQ1NGViM2Y0MTM5NDAyNjc0ZmU1IiwidXNlcl9pZCI6MX0.FgTK32tDuOELXpaoHGHiCmBzvIeKyrm0jozLYNMK3pQ
+
+###
+
+POST http://localhost:8000/api/token/refresh/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNzkyNTIyNiwiaWF0IjoxNzM3ODM4ODI2LCJqdGkiOiIxYzFiM2E4NWJkNTA0NDAxOGZhODM2ZjYwZWE5NTNmMSIsInVzZXJfaWQiOjF9.FlF45qF12ZN53YjnMwt6bgAhpGX1prLbl3h1UFmvimo"
+}
