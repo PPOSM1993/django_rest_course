@@ -39,13 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #CREATED APPS
     'apps.api',
 
+    #THIRD APPS
     'rest_framework',
     'silk',
     'rest_framework_simplejwt',
-
     'drf_yasg',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -137,5 +139,8 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend',],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    #'PAGE_SIZE': 5
 }
 

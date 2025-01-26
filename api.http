@@ -24,8 +24,7 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8000/api/user_orders/ HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3ODUwMzY5LCJpYXQiOjE3Mzc4NTAwNjksImp0aSI6IjUxNWZlMjhkYTc4ZTQ4MjliMmNmZTQ2NmJlOTY0MmQzIiwidXNlcl9pZCI6MX0.AtVcm91R332CRrGFNjaXALIEzYLTY7LACwOCvY2eUHc
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3OTA4NTgxLCJpYXQiOjE3Mzc5MDgyODEsImp0aSI6ImZhMzY5OGU4NDQyYzQwMTdiYjU1OWQ3MmI2MjgyNDdkIiwidXNlcl9pZCI6MX0.zAt-tmZzNy1_P-h3tu4y6lxdNcmIz4TfFNdgdYAujF8
 ###
 
 POST http://localhost:8000/api/token/refresh/ HTTP/1.1
