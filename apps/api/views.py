@@ -22,36 +22,32 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
-    def get_permissions(self):
-        self.permission_classes = [AllowAny]
-
-        #Condicion que solo me permite crear nuevos productos
-        #solo si el usuario esta autenticado.
-        if self.request.method == 'POST':
-            self.permission_classes = [IsAdminUser]
-
-        #Condicion que me indica que solo podre listar los productos
-        #solo si el usuario esta autenticado
-        elif self.request.method == 'GET':
-            self.permission_classes = [IsAdminUser]
-        return super().get_permissions()
-
-
-class ProductDetailAPIView(generics.RetrieveAPIView):
-    queryset = Product.objects.filter(stock__gt=0)
+    queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
     def get_permissions(self):
         self.permission_classes = [AllowAny]
-        if self.request.method == 'GET':
+        if self.request.method == 'POST':
+            self.permission_classes = [IsAdminUser]
+        elif self.request.method == 'GET':
             self.permission_classes = [IsAdminUser]
         return super().get_permissions()
+
+class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.filter(stock__gt=0)
+    serializer_class = ProductSerializer
+
+    #Funcion que le solicita al usuario estar autenticado para poder realizar las acciones d
+    #listar, actualizar o
+    def get_permissions(self):
+        self.permission_classes = [AllowAny]
+        if self.request.method in ['PUT', 'PATCH', 'DELETE']:
+            self.permission_classes = [IsAdminUser]
+        return super().get_permissions()   
 
 class OrderListAPIView(generics.ListAPIView):
     queryset = Order.objects.prefetch_related('items__product')
     serializer_class = OrderSerializer
-
-
 
 class UserOrderListAPIView(generics.ListAPIView):
     queryset = Order.objects.prefetch_related('items__product')

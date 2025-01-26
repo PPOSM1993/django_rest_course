@@ -24,7 +24,7 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8000/api/user_orders/ HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3ODM4NTcxLCJpYXQiOjE3Mzc4MzgyNzEsImp0aSI6Ijk4NWM4Mjk5NjM5YTQ1NGViM2Y0MTM5NDAyNjc0ZmU1IiwidXNlcl9pZCI6MX0.FgTK32tDuOELXpaoHGHiCmBzvIeKyrm0jozLYNMK3pQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3ODUwMzY5LCJpYXQiOjE3Mzc4NTAwNjksImp0aSI6IjUxNWZlMjhkYTc4ZTQ4MjliMmNmZTQ2NmJlOTY0MmQzIiwidXNlcl9pZCI6MX0.AtVcm91R332CRrGFNjaXALIEzYLTY7LACwOCvY2eUHc
 
 ###
 
@@ -34,3 +34,8 @@ Content-Type: application/json
 {
     "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNzkyNTIyNiwiaWF0IjoxNzM3ODM4ODI2LCJqdGkiOiIxYzFiM2E4NWJkNTA0NDAxOGZhODM2ZjYwZWE5NTNmMSIsInVzZXJfaWQiOjF9.FlF45qF12ZN53YjnMwt6bgAhpGX1prLbl3h1UFmvimo"
 }
+
+###
+
+PUT http://localhost:8000/api/products/1/ HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3ODUwNTAxLCJpYXQiOjE3Mzc4NTAyMDEsImp0aSI6IjU3ZTQzNjUzMGU3YzQwNWZhYWRlNTU5ODQ1OTljNTMxIiwidXNlcl9pZCI6MX0.Jv2TJFj1gEECgOD-thG8fBBDH-BFUQ4R1m9-sciod0o
