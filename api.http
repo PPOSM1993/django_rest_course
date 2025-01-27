@@ -1,16 +1,17 @@
 GET http://localhost:8000/api/products/ HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3OTg5NTc1LCJpYXQiOjE3Mzc5ODkyNzUsImp0aSI6IjAwYjBmMDZjOWRkYjQ0MjFhMmQyY2QxYzgwZGM1NmRlIiwidXNlcl9pZCI6MX0.6nZKQTdM5rcqlu9DMc69VAw6jAQZjOvPBiaobW2tieU
 
 ###
 
 POST http://localhost:8000/api/products/ HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3ODM4NDMwLCJpYXQiOjE3Mzc4MzgxMzAsImp0aSI6ImM2NmNjYTA3M2U3MDQyNzhiZGE0ZjRlY2U2ZmUzMzFmIiwidXNlcl9pZCI6MX0.P6JjRrRp-HNsxlZTNuuG8YpGfDjlOOhabUtdZBt6LJU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3OTg5NjI5LCJpYXQiOjE3Mzc5ODkzMjksImp0aSI6IjM2Y2VjNDgyNGE4OTQ0ZGFhNDFhMTMwN2Q2MDgwYjdlIiwidXNlcl9pZCI6MX0.LuMr-jXyeBScXZUiqeqTqH55f9pNA2rTozeK0mrSQ6k
 
 {
-    "name": "Television Samsung Smart TV",
-    "price": 600.00,
+    "name": "Nike Hypervenom 2018",
+    "price": -1.00,
     "stock": 15,
-    "description": "An amazing TV"
+    "description": "Nike Boots from Rusia 2018 FIFA World Cup"
 }
 
 ###
