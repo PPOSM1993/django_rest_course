@@ -93,3 +93,59 @@ class ProductInfoAPIView(APIView):
             'max_price': products.aggregate(max_price=Max('price'))['max_price']
         })
         return Response(serializer.data)
+
+
+
+
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.order_by('pk')
+    serializer_class = ProductSerializer
+    permission_classes = [AllowAny]
+    
+    filterset_class = ProductFilter
+    filter_backends = [
+        DjangoFilterBackend, 
+        filters.SearchFilter, 
+        filters.OrderingFilter,
+        #filters,InStockFilterBackend
+
+    ]
+
+    search_fields = ['name', 'description']
+    ordering_fields = ['name', 'price', 'stock']
+    
+    pagination_class = PageNumberPagination
+    pagination_class.page_size = 9
+    pagination_class.page_query_param = 'pagenum'
+    pagination_class.page_size_query_param ='size'
+    pagination_class.max_page_size = 10
+    
+    def get_permissions(self):
+        self.permission_classes = [AllowAny]
+
+        if self.request.method == 'POST':
+            self.permission_classes = [IsAuthenticated]
+
+        elif self.request.method in ['PUT', 'PATCH', 'DELETE']:
+            self.permission_classes = [IsAuthenticated]
+        return super().get_permissions()
+
+
+
+#Esto es un avance
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = [AllowAny]
+
+    @action(
+        detail=False, 
+        methods=['GET'], 
+        url_path='product_list', 
+        permission_classes = [IsAuthenticated]
+    )
+    def ProductList(self, request):
+        pass
+
+    def ProductDetail(self, request, pk):
+        pass

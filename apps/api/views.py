@@ -38,8 +38,8 @@ class ProductViewSet(viewsets.ModelViewSet):
     pagination_class.page_size = 9
     pagination_class.page_query_param = 'pagenum'
     pagination_class.page_size_query_param ='size'
-    pagination_class.max_page_size =10
-
+    pagination_class.max_page_size = 10
+    
     def get_permissions(self):
         self.permission_classes = [AllowAny]
 
@@ -55,6 +55,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.prefetch_related('items__product')
     serializer_class = OrderSerializer
     permission_classes = [AllowAny]
+
     pagination_class = None
     filterset_class = OrderFilter
 
@@ -62,20 +63,17 @@ class OrderViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
 
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        if not self.request.user.is_staff:
+            qs = qs.filter(user=self.request.user)
+        return qs
+
     """Crear una funcion que evite que el usuario no pueda crear ordenes si no esta autenticado"""
-    def get_permissions(self):
-        self.permission_classes = [AllowAny]
-
-        if self.request.method == 'POST':
-            self.permission_classes = [IsAuthenticated]
-
-        #elif self.request.method in ['PUT', 'PATCH', 'DELETE']:
-        #    self.permission_classes = [IsAuthenticated]
-        #return super().get_permissions()
 
     @action(
         detail=False, 
-        methods=['GET'], 
+        methods=['GET', 'POST'], 
         url_path='user_orders',
         permission_classes = [IsAuthenticated]
     )
