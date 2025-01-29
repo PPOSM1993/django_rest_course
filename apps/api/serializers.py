@@ -34,10 +34,39 @@ class OrderItemSerializer(serializers.ModelSerializer):
             'quantity', 
             #'product', 
         )
+    
+class OrderCreateSerializer(serializers.ModelSerializer):
+
+    class OrderItemCreateSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = OrderItem
+            
+    order_id = serializers.UUIDField(read_only=True)
+    items = OrderItemCreateSerializer(many=True)
+
+    def create(self, validated_data):
+        orderitem_data = validated_data.pop('items')
+        order = Order.objects.create(**validated_data)
+
+        for item in orderitem_data:
+            OrderItem.objects.create(order=order, **item)
+
+            return order
+
+    class Meta:
+        model = Order
+        fields = (
+            'order_id',
+            'created_at',
+            'user',
+            'status',
+            'items',
+            'total_price',
+        )
 
 class OrderSerializer(serializers.ModelSerializer):
     order_id = serializers.UUIDField(read_only=True)
-    items = OrderItemSerializer(many=True, read_only=True)
+    items = OrderItemSerializer(many=True)
     #products = ProductSerializer(many=True, read_only=True)
 
     total_price = serializers.SerializerMethodField(method_name='total')
